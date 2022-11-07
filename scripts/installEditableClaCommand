@@ -1,0 +1,22 @@
+#!/bin/bash
+
+# This bash script uses the current working directory to create a simple
+# script to run the cla command anywhere in a user's workspace.
+
+cmdScript=$(pwd)/.venv/bin/cla
+
+cat << CMD_SCRIPT > $HOME/.local/bin/cla
+#!/bin/sh
+
+# This shell script was created by the cutelogActions tool
+#       './scripts/installEditableClaCommand'
+# script.
+
+exec $cmdScript \$@
+CMD_SCRIPT
+
+chmod a+x $HOME/.local/bin/cla
+
+echo ""
+echo "Editable cla command has been created"
+echo ""
