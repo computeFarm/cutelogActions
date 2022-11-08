@@ -21,7 +21,7 @@ if not qtpy.PYQT5 and not qtpy.PYSIDE2:
 
 def main():
     import signal
-    from cutelog.config import ROOT_LOG
+    from cutelog.config import ROOT_LOG, CONFIG
     from cutelog.main_window import MainWindow
     from cutelog.resources import qCleanupResources
     from qtpy.QtGui import QIcon
@@ -35,6 +35,7 @@ def main():
     app = QApplication(sys.argv)
     app.setWindowIcon(QIcon(':/cutelog.png'))
     mw = MainWindow(ROOT_LOG, app)
+    CONFIG.set_option('listen_host', '127.0.0.1')
     signal.signal(signal.SIGINT, mw.signal_handler)
 
     sys.exit(app.exec_())
