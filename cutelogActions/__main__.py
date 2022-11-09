@@ -36,6 +36,7 @@ def main():
     app.setWindowIcon(QIcon(':/cutelog.png'))
     mw = MainWindow(ROOT_LOG, app)
     CONFIG.set_option('listen_host', '127.0.0.1')
+    CONFIG.set_option('default_serialization_format', 'json')
     signal.signal(signal.SIGINT, mw.signal_handler)
 
     sys.exit(app.exec_())
